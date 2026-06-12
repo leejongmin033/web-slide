@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>웹 슬라이드</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .slide {
+            display: none;
+            height: 100vh;
+            padding-top: 200px;
+            font-size: 40px;
+        }
+
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slide active">
+    <h1>첫 번째 슬라이드</h1>
+</div>
+
+<div class="slide">
+    <h1>두 번째 슬라이드</h1>
+</div>
+
+<div class="slide">
+    <h1>세 번째 슬라이드</h1>
+</div>
+
+<script>
+    let current = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    document.addEventListener('keydown', (e) => {
+        slides[current].classList.remove('active');
+
+        if (e.key === 'ArrowRight') {
+            current = (current + 1) % slides.length;
+        }
+
+        if (e.key === 'ArrowLeft') {
+            current = (current - 1 + slides.length) % slides.length;
+        }
+
+        slides[current].classList.add('active');
+    });
+</script>
+
+</body>
+</html>
